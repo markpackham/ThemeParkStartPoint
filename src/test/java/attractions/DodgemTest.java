@@ -19,7 +19,6 @@ public class DodgemTest {
         visitor2 = new Visitor(100,100,100000);
     }
 
-
     @Test
     public void hasName() {
         assertEquals("Bumper Cars", dodgems.getName());
@@ -33,5 +32,15 @@ public class DodgemTest {
     @Test
     public void hasVisitCount() {
         assertEquals(0, dodgems.getVisitCount());
+    }
+
+    @Test
+    public void priceFor(){
+        assertEquals(4.50,dodgems.priceFor(visitor2),0.01);
+    }
+
+    @Test
+    public void priceFor__very_young_half_price(){
+        assertEquals(2.25,dodgems.priceFor(visitor1),0.01);
     }
 }
