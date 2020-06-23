@@ -57,4 +57,14 @@ public class RollercoasterTest {
     public void isAllowedTo__false__too_young() {
         assertEquals(false,rollerCoaster.isAllowedTo(visitor4));
     }
+
+    @Test
+    public void priceFor(){
+        assertEquals(8.40,rollerCoaster.priceFor(visitor1),0.01);
+    }
+
+    @Test
+    public void priceFor__very_tall_double_price(){
+        assertEquals(16.80,rollerCoaster.priceFor(visitor3),0.01);
+    }
 }
