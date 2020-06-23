@@ -58,4 +58,15 @@ public class ThemeParkTest {
         themePark.visit(visitor1,park);
         assertEquals(4,visitor1.getVisitedAttractions().size());
     }
+
+    @Test
+    public void getReviews() {
+        rollerCoaster.setRating(1);
+        playground.setRating(2);
+        dodgems.setRating(3);
+        themePark.add(rollerCoaster);
+        themePark.add(playground);
+        themePark.add(dodgems);
+        assertEquals("{Fun Zone=2, Bumper Cars=3, Blue Ridge=1}",themePark.getReviews().toString());
+    }
 }
