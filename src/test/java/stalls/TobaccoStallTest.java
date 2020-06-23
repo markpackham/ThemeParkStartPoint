@@ -2,16 +2,21 @@ package stalls;
 
 import org.junit.Before;
 import org.junit.Test;
+import people.Visitor;
 
 import static org.junit.Assert.assertEquals;
 
 public class TobaccoStallTest {
 
     TobaccoStall tobaccoStall;
+    Visitor visitor1;
+    Visitor visitor2;
 
     @Before
     public void setUp() throws Exception {
         tobaccoStall = new TobaccoStall("Jacks Drum", "Jack Jarvis", ParkingSpot.B1);
+        visitor1 = new Visitor(1,1,1);
+        visitor2 = new Visitor(100,100,100000);
     }
 
     @Test
@@ -27,5 +32,15 @@ public class TobaccoStallTest {
     @Test
     public void hasParkingSpot() {
         assertEquals(ParkingSpot.B1, tobaccoStall.getParkingSpot());
+    }
+
+    @Test
+    public void isAllowedTo() {
+        assertEquals(true,tobaccoStall.isAllowedTo(visitor2));
+    }
+
+    @Test
+    public void isAllowedTo__false() {
+        assertEquals(false,tobaccoStall.isAllowedTo(visitor1));
     }
 }
