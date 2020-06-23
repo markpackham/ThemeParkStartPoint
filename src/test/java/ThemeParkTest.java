@@ -6,7 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 import people.Visitor;
 import stalls.CandyflossStall;
+import stalls.IceCreamStall;
 import stalls.ParkingSpot;
+import stalls.TobaccoStall;
 
 import static org.junit.Assert.*;
 
@@ -21,9 +23,14 @@ public class ThemeParkTest {
     Visitor visitor2;
     Visitor visitor3;
     Visitor visitor4;
+    TobaccoStall tobaccoStall;
+    IceCreamStall iceCreamStall;
+
 
     @Before
     public void setUp() throws Exception {
+        tobaccoStall = new TobaccoStall("Jacks Drum", "Jack Jarvis", ParkingSpot.B1);
+        iceCreamStall = new IceCreamStall("Dream Cones", "Vanilla Ice", ParkingSpot.A4);
         rollerCoaster = new RollerCoaster("Blue Ridge", 10);
         playground = new Playground("Fun Zone", 7);
         dodgems = new Dodgems("Bumper Cars", 5);
@@ -68,5 +75,17 @@ public class ThemeParkTest {
         themePark.add(playground);
         themePark.add(dodgems);
         assertEquals("{Fun Zone=2, Bumper Cars=3, Blue Ridge=1}",themePark.getReviews().toString());
+    }
+
+    // Incomplete, need to do checks for not allowed
+    @Test
+    public void getAllAllowedFor() {
+        themePark.add(rollerCoaster);
+        themePark.add(playground);
+        themePark.add(dodgems);
+        themePark.add(park);
+        themePark.add(tobaccoStall);
+        themePark.add(iceCreamStall);
+        assertEquals(6,themePark.getAllAllowedFor(visitor1).size());
     }
 }
